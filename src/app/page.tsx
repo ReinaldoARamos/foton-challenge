@@ -1,9 +1,11 @@
-"use client";
+'use client'
 import { MagnifyingGlass } from "phosphor-react";
 import { Tasks } from "./components/Tasks/tasks";
+import AddFeather from "./components/addFeather/addFeather";
+
 export default function TaskList() {
   return (
-    <div className="p-3.5">
+    <div className="relative p-3.5">
       <div className="pb-4">
         <h1 className="text-header text-3xl font-bold font-mono space-y-1.5">
           Hello, Reinaldo
@@ -25,6 +27,12 @@ export default function TaskList() {
         <Tasks />
         <Tasks />
       </div>
+      {/* Fixed button */}
+      <button className="fixed bottom-4 right-4 bg-header text-white rounded-full ">
+        <div className="p-6 flex justify-center items-center">
+          <AddFeather />
+        </div>
+      </button>
     </div>
   );
 }
