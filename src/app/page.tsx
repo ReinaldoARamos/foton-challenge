@@ -2,8 +2,10 @@
 import { MagnifyingGlass } from "phosphor-react";
 import { Tasks } from "./components/Tasks/tasks";
 import AddFeather from "./components/addFeather/addFeather";
+import { UseRedirect } from "./Hooks/useRedirect";
 
 export default function TaskList() {
+  const redirectTo = UseRedirect()
   return (
     <div className="relative p-3.5">
       <div className="pb-4">
@@ -28,7 +30,7 @@ export default function TaskList() {
         <Tasks />
       </div>
       {/* Fixed button */}
-      <button className="fixed bottom-4 right-4 bg-header text-white rounded-full ">
+      <button className="fixed bottom-4 right-4 bg-header text-white rounded-full " onClick={() => redirectTo('/newtask')}>
         <div className="p-6 flex justify-center items-center">
           <AddFeather />
         </div>
