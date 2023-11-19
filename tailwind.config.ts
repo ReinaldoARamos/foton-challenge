@@ -16,7 +16,7 @@ const config: Config = {
       colors: {
         'input' :  'rgba(238, 238, 238, 1)',
         'input-text' : 'rgba(188, 188, 188, 1)',
-        'task' : 'rgba(30, 179, 107, 0.68)'
+        'task' : 'rgba(30, 179, 107, 1)'
         
       }
     },
