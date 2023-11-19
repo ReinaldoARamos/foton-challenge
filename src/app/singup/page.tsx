@@ -28,7 +28,9 @@ export default function SingUp() {
             <div className="text-md text-task" onClick={() => redirectTo('/login')}>Login!</div>
           </span>
         </div>
+       
         <Button text="SingUp" />
+        
       </div>
     </div>
   );
