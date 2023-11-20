@@ -3,8 +3,43 @@ import { MagnifyingGlass } from "phosphor-react";
 import { Tasks } from "./components/Tasks/tasks";
 import AddFeather from "./components/addFeather/addFeather";
 import { UseRedirect } from "./Hooks/useRedirect";
+import { useEffect, useState } from "react";
 
+interface Tasks  {
+  title: string
+  description: string
+}
 export default function TaskList() {
+
+  const [tasks, setNewTask] = useState<Tasks[]>([]);
+
+  // Set the initial state in a useEffect to avoid infinite render
+  useEffect(() => {
+    const tasksArray: Tasks[] = [
+      {
+        title: 'Task 1',
+        description: 'Description 1',
+      },
+      {
+        title: 'Task 2',
+        description: 'Description 2',
+      },
+      {
+        title: 'Task 3',
+        description: 'Description 3',
+      },
+      {
+        title: 'Task 4',
+        description: 'Description 24',
+      },
+      // Add more tasks as needed
+    ];
+  
+    setNewTask(tasksArray);
+  }, []); // Empty dependency array means it runs only once, similar to componentDidMount
+  
+  console.log(tasks);
+  
   const redirectTo = UseRedirect()
   return (
     <div className="relative p-3.5">
@@ -20,14 +55,13 @@ export default function TaskList() {
         <MagnifyingGlass color="#BCBCBC" size={22} />
         <input
           placeholder="Search..."
-          className="w-full text-xl outline-none text-input-text"
+          className="w-full text-xl outline-none text-input-text bg-gray-100"
         />
       </div>
       <div className="space-y-5">
-        <Tasks />
-        <Tasks />
-        <Tasks />
-        <Tasks />
+      {tasks.map((task) => (
+        <Tasks description={task.description} title={task.title} key={task.title}/>
+      ))}
       </div>
       {/* Fixed button */}
       <button className="fixed bottom-4 right-4 bg-header text-white rounded-full " onClick={() => redirectTo('/newtask')}>

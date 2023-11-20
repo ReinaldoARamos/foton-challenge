@@ -4,6 +4,7 @@ import { Input } from "../components/Input/Input";
 import { Button } from "../components/Button/Button";
 
 export default function NewTask() {
+  
   return (
     <div className="p-3.5 flex flex-col h-screen justify-between">
       <div className="h-full">
