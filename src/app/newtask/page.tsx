@@ -39,7 +39,7 @@ export default function NewTask() {
         <h1 className="space-y-1.5 font-mono text-3xl font-bold text-header">
           New Task
         </h1>
-        <Avatar src={"https://avatars.githubusercontent.com/u/55931337?v=4"}    />
+        <Avatar src={"https://avatars.githubusercontent.com/u/55931337?v=4"}    isLoggedIn={false}/>
         </div>
         <span className="font-mono text-sm font-medium text-header">
           What do you want to do? 🤔

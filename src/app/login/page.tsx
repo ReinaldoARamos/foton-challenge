@@ -19,7 +19,9 @@ export default function Login() {
             No account?&nbsp;<div className="text-md text-task" onClick={() => redirectTo('/singup')}>Sing Up!</div>
           </span>
         </div>
-      <Button text="Login"/>
+
+       <Button text="Login"  redirect="/" />
+  
       </div>
      
     </div>
