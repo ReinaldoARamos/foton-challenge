@@ -18,6 +18,7 @@ export default function NewTask() {
     register,
     handleSubmit,
     setValue,
+    reset,
     formState: { isSubmitting },
   } = useForm<NewTaskData>({ resolver: zodResolver(NewTaskSchema) });
 
@@ -25,7 +26,10 @@ export default function NewTask() {
 
   function handleUpdateData(data: NewTaskData) {
     setFormData(data);
+    reset();
     console.log("UPDATED:", data);
+
+
   }
   return (
     <form className="flex h-screen flex-col justify-between p-3.5" onSubmit={handleSubmit(handleUpdateData)}>
