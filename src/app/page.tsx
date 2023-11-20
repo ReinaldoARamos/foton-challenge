@@ -4,6 +4,7 @@ import { Tasks } from "./components/Tasks/tasks";
 import AddFeather from "./components/addFeather/addFeather";
 import { UseRedirect } from "./Hooks/useRedirect";
 import { useEffect, useState } from "react";
+import { Avatar } from "./components/Avatar/avatar";
 
 interface Tasks  {
   title: string
@@ -39,14 +40,18 @@ export default function TaskList() {
   }, []); // Empty dependency array means it runs only once, similar to componentDidMount
   
   console.log(tasks);
+ 
   
   const redirectTo = UseRedirect()
   return (
     <div className="relative p-3.5">
       <div className="pb-4">
-        <h1 className="text-header text-3xl font-bold font-mono space-y-1.5">
+       <div className="flex justify-between items-center">
+       <h1 className="text-header text-3xl font-bold font-mono space-y-1.5">
           Hello, Reinaldo
         </h1>
+        <Avatar src={"https://avatars.githubusercontent.com/u/55931337?v=4"}    />
+       </div>
         <span className="font-mono text-header text-sm font-medium">
           Check your tasks! 👇{" "}
         </span>
