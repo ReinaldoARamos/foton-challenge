@@ -1,7 +1,20 @@
 import { create } from 'zustand'
 
-const useStore = create((set) => ({
+
+interface stateProps {
+    bears: number;
+    increasePopulation: () => void;
+    removeAllBears: () => void;
+}
+
+
+interface Tasks  {
+    title: string
+    description: string
+  }
+  
+export const useStore = create((set) => ({
   bears: 0,
-  increasePopulation: () => set((state: { bears: number }) => ({ bears: state.bears + 1 })),
+  increasePopulation: () => set(({bears, increasePopulation, removeAllBears} : stateProps ) => ({ bears: bears + 1 })),
   removeAllBears: () => set({ bears: 0 }),
 }))

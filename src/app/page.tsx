@@ -5,6 +5,10 @@ import AddFeather from "./components/addFeather/addFeather";
 import { UseRedirect } from "./Hooks/useRedirect";
 import { useEffect, useState } from "react";
 import { Avatar } from "./components/Avatar/avatar";
+import { useStore } from "zustand";
+import { BearCounter } from "./components/Zustand/zustandtest";
+import { Controls } from "./components/Zustand/ZustandIncrease";
+import { Remove } from "./components/Zustand/deletebears";
 
 interface Tasks  {
   title: string
@@ -43,6 +47,8 @@ export default function TaskList() {
  
   
   const redirectTo = UseRedirect()
+
+ 
   return (
     <div className="relative p-3.5">
       <div className="pb-4">
@@ -50,6 +56,9 @@ export default function TaskList() {
        <h1 className="text-header text-3xl font-bold font-mono space-y-1.5">
           Hello, Reinaldo
         </h1>
+        <BearCounter />
+        <Controls/>
+        <Remove />
         <Avatar src={"https://avatars.githubusercontent.com/u/55931337?v=4"}    isLoggedIn={false}/>
        </div>
         <span className="font-mono text-header text-sm font-medium">
