@@ -56,10 +56,9 @@ export default function TaskList() {
        <h1 className="text-header text-3xl font-bold font-mono space-y-1.5">
           Hello, Reinaldo
         </h1>
-        <BearCounter />
-        <Controls/>
-        <Remove />
-        <Avatar src={"https://avatars.githubusercontent.com/u/55931337?v=4"}    isLoggedIn={false}/>
+       
+       
+        <Avatar src={"https://avatars.githubusercontent.com/u/55931337?v=4"}    isLoggedIn={true}/>
        </div>
         <span className="font-mono text-header text-sm font-medium">
           Check your tasks! 👇{" "}
