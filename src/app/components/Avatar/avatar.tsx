@@ -5,11 +5,11 @@ import { useState } from "react";
 /* eslint-disable @next/next/no-img-element */
 interface AvatarProps {
   src: string;
-  isLoggedIn?: boolean;
+
 }
 
 
-export function Avatar({ src, isLoggedIn }: AvatarProps) {
+export function Avatar({ src }: AvatarProps) {
   const redirectTo = UseRedirect();
   const [login, setLogin] = useState(true)
   function handleLogOut () {

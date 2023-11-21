@@ -58,7 +58,7 @@ export default function TaskList() {
         </h1>
        
        
-        <Avatar src={"https://avatars.githubusercontent.com/u/55931337?v=4"}    isLoggedIn={true}/>
+        <Avatar src={"https://avatars.githubusercontent.com/u/55931337?v=4"}   />
        </div>
         <span className="font-mono text-header text-sm font-medium">
           Check your tasks! 👇{" "}
