@@ -14,12 +14,13 @@ import { api } from "./lib/axios";
 
 interface Tasks  {
   title: string
-  description: string
+  Description: string
 }
 export default function TaskList() {
 
   const [tasks, setNewTask] = useState<Tasks[]>([]);
 
+  /*
   // Set the initial state in a useEffect to avoid infinite render
   useEffect(() => {
     const tasksArray: Tasks[] = [
@@ -45,13 +46,13 @@ export default function TaskList() {
     setNewTask(tasksArray);
   }, []); // Empty dependency array means it runs only once, similar to componentDidMount
   
-
+*/
  
   
   const redirectTo = UseRedirect()
 
-  const { isLoading, data } = useQuery<Tasks>({
-    queryKey: ["User"],
+  const { isLoading, data } = useQuery<Tasks[]>({
+    queryKey: ["Tasks"],
     queryFn: async () => {
       const response = await api.get(`/tasks`);
       console.log(response.data)
@@ -82,8 +83,8 @@ export default function TaskList() {
         />
       </div>
       <div className="space-y-5">
-      {tasks.map((task) => (
-        <Tasks description={task.description} title={task.title} key={task.title}/>
+      {data?.map((task) => (
+        <Tasks description={task.Description} title={task.title} key={task.title}/>
       ))}
       </div>
       {/* Fixed button */}
