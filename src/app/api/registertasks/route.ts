@@ -1,4 +1,5 @@
 import { prisma } from "@/app/lib/prisma"
+import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
 const CreateNewTaskSchema = z.object({
@@ -8,14 +9,23 @@ const CreateNewTaskSchema = z.object({
   });
 
   
-export async function POST(req: Request, res: Response) {
-    const { Description, title } = CreateNewTaskSchema.parse(req.body);
+export async function POST(req: Request) {
+   // const { Description, title } = CreateNewTaskSchema.parse(req.body);
+    
+    const json = await req.json();
+     const newtask = await prisma.tasks.create({
+        data: json
+     })
 
-   await prisma.tasks.create({
-    data: {
-        title : title,
-        Description: Description
+     let json_response = {
+        status: "success",
+        data: {
+            newtask,
+        },
+      };
+      return new NextResponse(JSON.stringify(json_response), {
+        status: 201,
+        headers: { "Content-Type": "application/json" },
+      });
     }
-   }) 
-   return 
-  }
+  
