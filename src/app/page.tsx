@@ -18,35 +18,6 @@ interface Tasks  {
 }
 export default function TaskList() {
 
-  const [tasks, setNewTask] = useState<Tasks[]>([]);
-
-  /*
-  // Set the initial state in a useEffect to avoid infinite render
-  useEffect(() => {
-    const tasksArray: Tasks[] = [
-      {
-        title: 'Task 1',
-        description: 'Description 1',
-      },
-      {
-        title: 'Task 2',
-        description: 'Description 2',
-      },
-      {
-        title: 'Task 3',
-        description: 'Description 3',
-      },
-      {
-        title: 'Task 4',
-        description: 'Description 24',
-      },
-      // Add more tasks as needed
-    ];
-  
-    setNewTask(tasksArray);
-  }, []); // Empty dependency array means it runs only once, similar to componentDidMount
-  
-*/
  
   
   const redirectTo = UseRedirect()
