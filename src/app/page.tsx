@@ -9,6 +9,8 @@ import { useStore } from "zustand";
 import { BearCounter } from "./components/Zustand/zustandtest";
 import { Controls } from "./components/Zustand/ZustandIncrease";
 import { Remove } from "./components/Zustand/deletebears";
+import { useQuery } from "@tanstack/react-query";
+import { api } from "./lib/axios";
 
 interface Tasks  {
   title: string
@@ -43,11 +45,19 @@ export default function TaskList() {
     setNewTask(tasksArray);
   }, []); // Empty dependency array means it runs only once, similar to componentDidMount
   
-  console.log(tasks);
+
  
   
   const redirectTo = UseRedirect()
 
+  const { isLoading, data } = useQuery<Tasks>({
+    queryKey: ["User"],
+    queryFn: async () => {
+      const response = await api.get(`/tasks`);
+      console.log(response.data)
+      return response.data;
+    },
+  });
  
   return (
     <div className="relative p-3.5">
