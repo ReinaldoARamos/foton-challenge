@@ -21,7 +21,7 @@ export default function NewTask() {
   } = useForm();
 
   const [title, setTitle] = useState<string>();
-  const [description, setDescription] = useState<string>();
+  const [Description, setDescription] = useState<string>();
 
   const handleDescription = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     const newText = event.target.value;
@@ -37,7 +37,7 @@ export default function NewTask() {
     try {
       const response = await api.post(`registertasks`, {
         title,
-        description,
+        Description,
       });
     
     } catch (error) {
@@ -65,7 +65,7 @@ export default function NewTask() {
             onChange={handleDescription}
           />
          <div>Titulo {title}</div>
-         <div>Descricao {description}</div>
+         <div>Descricao {Description}</div>
         </div>
       </div>
      

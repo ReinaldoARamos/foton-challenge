@@ -11,7 +11,7 @@ import { Controls } from "./components/Zustand/ZustandIncrease";
 import { Remove } from "./components/Zustand/deletebears";
 import { useQuery } from "@tanstack/react-query";
 import { api } from "./lib/axios";
-
+import Image from 'next/image'
 interface Tasks  {
   title: string
   Description: string
@@ -53,12 +53,24 @@ export default function TaskList() {
           className="w-full text-xl outline-none text-input-text bg-gray-100"
         />
       </div>
-      <div className="space-y-5">
-      {data?.map((task) => (
-        <Tasks description={task.Description} title={task.title} key={task.title}/>
-      ))}
-      </div>
-      {/* Fixed button */}
+      {data?.length ? (
+        <div className="space-y-5">
+        {data?.map((task) => (
+          <Tasks description={task.Description} title={task.title} key={task.title}/>
+        ))}
+        </div>
+      ) : <div className="flex justify-center items-center flex-col">
+         <Image
+              src={"/images/image 2.png"}
+              alt=""
+              width={261}
+              height={222}
+            />
+            <h2 className="text-header text-2xl text-center pt-6 font-bold font-mono space-y-1.5">
+          Você ainda não possui tarefas! 
+        </h2>
+        </div>}
+
       <button className="fixed bottom-4 right-4 bg-header text-white rounded-full " onClick={() => redirectTo('/newtask')}>
         <div className="p-6 flex justify-center items-center">
           <AddFeather />
