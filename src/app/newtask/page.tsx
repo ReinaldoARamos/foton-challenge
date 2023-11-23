@@ -73,7 +73,7 @@ export default function NewTask() {
         </div>
       </div>
 
-      <Button text="Add" type="submit" />
+      <Button text="Add" type="submit" disabled={isSubmitting} />
     </form>
   );
 }
