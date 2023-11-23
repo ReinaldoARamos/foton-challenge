@@ -3,12 +3,7 @@ import { MagnifyingGlass } from "phosphor-react";
 import { Tasks } from "./components/Tasks/tasks";
 import AddFeather from "./components/addFeather/addFeather";
 import { UseRedirect } from "./Hooks/useRedirect";
-import { useEffect, useState } from "react";
 import { Avatar } from "./components/Avatar/avatar";
-import { useStore } from "zustand";
-import { BearCounter } from "./components/Zustand/zustandtest";
-import { Controls } from "./components/Zustand/ZustandIncrease";
-import { Remove } from "./components/Zustand/deletebears";
 import { useQuery } from "@tanstack/react-query";
 import { api } from "./lib/axios";
 import Image from 'next/image'
