@@ -64,8 +64,7 @@ export default function NewTask() {
             placeholder="description "
             onChange={handleDescription}
           />
-         <div>Titulo {title}</div>
-         <div>Descricao {Description}</div>
+         
         </div>
       </div>
      
