@@ -14,6 +14,7 @@ interface TaskProps {
 
 export function Tasks({description, title, id} : TaskProps) {
   const [deleteTriggered, setDeleteTriggered] = useState(false);
+  const [isDeleted, setIsDeleted] = useState(false);
 
   async function HandleDelete(id : string) {
     try {
@@ -32,17 +33,30 @@ export function Tasks({description, title, id} : TaskProps) {
       window.location.reload();
     }
   }, [deleteTriggered]);
-  
+
+  useEffect(() => {
+    if (isDeleted) {
+      // Add a delay before fading away and moving to the right
+      setTimeout(() => {
+        setIsDeleted(false); // Reset the state to reuse the component
+      }, 1000); // Adjust the duration as needed
+    }
+  }, [isDeleted]);
   return (
-    <div className="bg-task px-4 py-4  rounded-md">
-   
+    <div
+      className={`${
+        isDeleted ? 'slideLeftAndFade' : ''
+      } bg-task px-4 py-4 rounded-md transition-transform`}
+    >
       <div className="flex justify-between">
-      <h1 className="pb-1.5 text-xl text-white font-bold">{title}</h1>
-      <Trash size={24} className="text-red-700" onClick={() => HandleDelete(id)}/>
+        <h1 className="pb-1.5 text-xl text-white font-bold">{title}</h1>
+        <Trash
+          size={24}
+          className="text-red-700 cursor-pointer"
+          onClick={() => HandleDelete(id)}
+        />
       </div>
-      <div className="text-white text-xs font-medium">
-    {description}
-      </div>
+      <div className="text-white text-xs font-medium">{description}</div>
     </div>
   );
 }
