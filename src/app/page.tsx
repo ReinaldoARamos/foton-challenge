@@ -8,6 +8,7 @@ import { useQuery } from "@tanstack/react-query";
 import { api } from "./lib/axios";
 import Image from 'next/image'
 interface Tasks  {
+  id: string
   title: string
   Description: string
 }
@@ -51,7 +52,7 @@ export default function TaskList() {
       {data?.length ? (
         <div className="space-y-5">
         {data?.map((task) => (
-          <Tasks description={task.Description} title={task.title} key={task.title}/>
+          <Tasks description={task.Description} title={task.title} key={task.title} id={task.id} />
         ))}
         </div>
       ) : <div className="flex justify-center items-center flex-col">
