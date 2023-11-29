@@ -4,6 +4,7 @@ import { Trash } from "phosphor-react";
 import { useEffect, useState } from "react";
 import * as Checkbox from "@radix-ui/react-checkbox";
 import { CheckIcon } from "lucide-react";
+import { UseRedirect } from "@/app/Hooks/useRedirect";
 
 interface TaskProps {
   id: string;
@@ -24,7 +25,8 @@ export function Tasks({ description, title, id }: TaskProps) {
       console.error("Validation error:", error);
     }
   }
-
+  const redirectTo = UseRedirect();
+  
   useEffect(() => {
     if (deleteTriggered) {
       window.location.reload();
@@ -36,6 +38,7 @@ export function Tasks({ description, title, id }: TaskProps) {
       className={`flex items-center  gap-3 rounded-md  bg-task px-4 py-4  ${
         isChecked ? "line-through opacity-90" : ""
       }`}
+      onClick={() => redirectTo(`${id}`)}
     >
       <Checkbox.Root
         checked={isChecked}

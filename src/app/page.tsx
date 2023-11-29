@@ -73,6 +73,7 @@ export default function TaskList() {
               title={task.title}
               key={task.title}
               id={task.id}
+              
             />
           ))}
         </div>
