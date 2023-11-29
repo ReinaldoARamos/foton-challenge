@@ -23,7 +23,7 @@ export default function TaskList() {
   };
   const redirectTo = UseRedirect();
 
-  const { isLoading, data } = useQuery<Tasks[]>({
+  const { isLoading, data } = useQuery<Tasks[] >({
     queryKey: ["Tasks"],
     queryFn: async () => {
       const response = await api.get(`/tasks`);
