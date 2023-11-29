@@ -43,8 +43,8 @@ export function Tasks({ description, title, id }: TaskProps) {
         onCheckedChange={(state) => setIsChecked(state)}
         className="shadow-blackA4 hover:bg-violet3 flex h-6 w-6 appearance-none items-center justify-center rounded-full  bg-white shadow-[0_2px_10px] outline-none focus:shadow-[0_0_0_2px_black]"
       >
-        <Checkbox.Indicator className="text-violet11 ">
-          <CheckIcon />
+        <Checkbox.Indicator className="text-task flex items-center">
+          <CheckIcon size={16}/>
         </Checkbox.Indicator>
       </Checkbox.Root>
       <div className="flex w-full flex-col ">
@@ -58,7 +58,7 @@ export function Tasks({ description, title, id }: TaskProps) {
           </h1>
           
         </div>
-        <div className={`text-xs font-medium text-white `}>{description}</div>
+        <div className={`text-xs font-medium text-white  `}>{description}</div>
         
       </div>
       <Trash
