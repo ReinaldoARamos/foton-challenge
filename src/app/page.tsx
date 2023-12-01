@@ -7,7 +7,7 @@ import { Avatar } from "./components/Avatar/avatar";
 import { useQuery } from "@tanstack/react-query";
 import { api } from "./lib/axios";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 interface Tasks {
   id: string;
   title: string;
@@ -15,15 +15,20 @@ interface Tasks {
 }
 export default function TaskList() {
   const [search, setSearch] = useState<string>("");
-  
+  //const [searching, setSearching] = useState<boolean>(false)
+
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newText = event.target.value;
-    console.log(newText)
-    setSearch(event.target.value);
+    setSearch(newText);
+    // console.log(newText)
   };
+
+  function Search() {
+    console.log(search);
+  }
   const redirectTo = UseRedirect();
 
-  const { isLoading, data } = useQuery<Tasks[] >({
+  const { isLoading, data } = useQuery<Tasks[] | null>({
     queryKey: ["Tasks"],
     queryFn: async () => {
       const response = await api.get(`/tasks`);
@@ -31,6 +36,14 @@ export default function TaskList() {
       return response.data;
     },
   });
+  /*
+  const filteredTasks = data?.filter(
+    (task) =>
+      task.title.toLowerCase().includes(search.toLowerCase()) ||
+      task.Description.toLowerCase().includes(search.toLowerCase())
+  );
+
+*/
 
   const filteredTasks = data?.filter(
     (task) =>
@@ -38,7 +51,6 @@ export default function TaskList() {
       task.Description.toLowerCase().includes(search.toLowerCase())
   );
 
-  console.log(filteredTasks)
   return (
     <div className="relative p-3.5">
       <div className="pb-4">
@@ -65,9 +77,47 @@ export default function TaskList() {
       </div>
       {isLoading ? (
         <div>Loading...</div>
-      ) : data?.length ? (
+      ) : search === "" ? (
         <div className="space-y-5">
-           {filteredTasks?.map((task) => (
+          {data?.map((task) => (
+            <Tasks
+              description={task.Description}
+              title={task.title}
+              key={task.title}
+              id={task.id}
+            />
+          ))}
+        </div>
+      ) : (
+        <div className="space-y-5">
+        {filteredTasks?.map((task) => (
+         <Tasks
+           description={task.Description}
+           title={task.title}
+           key={task.title}
+           id={task.id}
+           
+         />
+       ))}
+     </div>
+      )}
+
+      <button
+        className="fixed bottom-4 right-4 rounded-full bg-header text-white "
+        onClick={() => redirectTo("/newtask")}
+      >
+        <div className="flex items-center justify-center p-6">
+          <AddFeather />
+        </div>
+      </button>
+    </div>
+  );
+}
+
+/*
+data?.length ? (
+        <div className="space-y-5">
+           {data?.map((task) => (
             <Tasks
               description={task.Description}
               title={task.title}
@@ -84,16 +134,5 @@ export default function TaskList() {
             Você ainda não possui tarefas!
           </h2>
         </div>
-      )}
-
-      <button
-        className="fixed bottom-4 right-4 rounded-full bg-header text-white "
-        onClick={() => redirectTo("/newtask")}
-      >
-        <div className="flex items-center justify-center p-6">
-          <AddFeather />
-        </div>
-      </button>
-    </div>
-  );
-}
+      )
+*/
